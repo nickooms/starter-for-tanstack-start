@@ -1,0 +1,47 @@
+[
+  {
+    "id": "box:1",
+    "name": "Schoenen 1",
+    "itemIds": ["7519772657"]
+  },
+  {
+    "id": "box:2",
+    "name": "Schoenen 2",
+    "itemIds": ["7509515920"]
+  },
+  {
+    "id": "box:3",
+    "name": "Schoenen 3",
+    "itemIds": []
+  },
+  {
+    "id": "box:4",
+    "name": "Jassen 1",
+    "itemIds": []
+  },
+  {
+    "id": "box:5",
+    "name": "Jassen 2",
+    "itemIds": []
+  },
+  {
+    "id": "box:6",
+    "name": "Jassen 3",
+    "itemIds": []
+  },
+  {
+    "id": "box:7",
+    "name": "Broeken 1",
+    "itemIds": []
+  },
+  {
+    "id": "box:8",
+    "name": "Broeken 2",
+    "itemIds": []
+  },
+  {
+    "id": "box:9",
+    "name": "Broeken 3",
+    "itemIds": []
+  }
+]

@@ -1,0 +1,21 @@
+.MuiContainer-root {
+  padding: 0px;
+}
+
+.MuiCardHeader-root {
+  padding: 8px;
+}
+
+main.MuiContainer-root {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 6px;
+
+  /* & div {
+    & section.items-section {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+  } */
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "group:1",
+    "name": "Schoenen",
+    "boxIds": ["box:1", "box:2", "box:3"]
+  },
+  {
+    "id": "group:2",
+    "name": "Jassen",
+    "boxIds": ["box:4", "box:5", "box:6"]
+  },
+  {
+    "id": "group:3",
+    "name": "Broeken",
+    "boxIds": ["box:7", "box:8", "box:9"]
+  },
+  {
+    "id": "group:4",
+    "name": "Rokken",
+    "boxIds": ["box:10", "box:11", "box:12"]
+  },
+  {
+    "id": "group:5",
+    "name": "Kleedjes",
+    "boxIds": ["box:13", "box:14", "box:15"]
+  },
+  {
+    "id": "group:6",
+    "name": "Hemden",
+    "boxIds": ["box:16", "box:17", "box:18"]
+  },
+  {
+    "id": "group:7",
+    "name": "Truien",
+    "boxIds": ["box:19", "box:20", "box:21"]
+  },
+  {
+    "id": "group:8",
+    "name": "BH's & Ondergoed",
+    "boxIds": ["box:22", "box:23", "box:24"]
+  },
+  {
+    "id": "group:9",
+    "name": "Allerlei",
+    "boxIds": ["box:25", "box:26", "box:27"]
+  }
+]

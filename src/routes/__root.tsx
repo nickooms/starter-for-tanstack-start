@@ -1,74 +1,76 @@
-import { TanStackDevtools } from "@tanstack/react-devtools";
-import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+/// <reference types="vite/client" />
+import React from 'react';
+import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
+import { HeadContent, Outlet, Scripts, createRootRouteWithContext } from '@tanstack/react-router';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
+import { Container, CssBaseline, ThemeProvider } from '@mui/material';
+import fontsourceVariableRobotoCss from '@fontsource-variable/roboto?url';
+import { theme } from '~/setup/theme';
+import { Header } from '~/components/Header';
+// import { fetchItems } from '~/util/fetchItems';
+// import { fetchBoxes } from '~/util/fetchBoxes';
+import { Item } from '~/types/Item/Item';
+import { Box } from '~/types/Box/Box';
 
-import appCss from "../styles.css?url";
-import "@appwrite.io/pink-icons";
+interface MyRouterContext {
+  items: Item[];
+  boxes: Box[];
+  // queryClient: QueryClient;
+  // fetchItems: typeof fetchItems;
+  // fetchBoxes: typeof fetchBoxes;
+}
 
-export const Route = createRootRoute({
-	head: () => ({
-		meta: [
-			{
-				charSet: "utf-8",
-			},
-			{
-				name: "viewport",
-				content: "width=device-width, initial-scale=1",
-			},
-			{
-				title: "Appwrite + TanStack Start",
-			},
-		],
-		links: [
-			{
-				rel: "stylesheet",
-				href: appCss,
-			},
-			{
-				rel: "preconnect",
-				href: "https://fonts.googleapis.com",
-			},
-			{
-				rel: "preconnect",
-				href: "https://fonts.gstatic.com",
-				crossOrigin: "anonymous",
-			},
-			{
-				rel: "stylesheet",
-				href: "https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:opsz,wght@14..32,100..900&family=Poppins:wght@300;400&display=swap",
-			},
-			{
-				rel: "icon",
-				type: "image/svg+xml",
-				href: "/appwrite.svg",
-			},
-		],
-	}),
+// const queryClient = new QueryClient();
 
-	shellComponent: RootDocument,
+export const Route = createRootRouteWithContext<MyRouterContext>()({
+  head: () => ({
+    links: [
+      { rel: 'stylesheet', href: fontsourceVariableRobotoCss },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
+    ],
+  }),
+  // context: { fetchItems, fetchBoxes },
+  component: RootComponent,
 });
 
+function RootComponent() {
+  return (
+    <RootDocument>
+      <Outlet />
+    </RootDocument>
+  );
+}
+
+function Providers({ children }: { children: React.ReactNode }) {
+  const emotionCache = createCache({ key: 'css' });
+
+  return (
+    <CacheProvider value={emotionCache}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
+    </CacheProvider>
+  );
+}
+
 function RootDocument({ children }: { children: React.ReactNode }) {
-	return (
-		<html lang="en">
-			<head>
-				<HeadContent />
-			</head>
-			<body className="bg-[#FAFAFB] font-[Inter] text-sm text-[#56565C]">
-				{children}
-				<TanStackDevtools
-					config={{
-						position: "bottom-right",
-					}}
-					plugins={[
-						{
-							name: "Tanstack Router",
-							render: <TanStackRouterDevtoolsPanel />,
-						},
-					]}
-				/>
-				<Scripts />
-			</body>
-		</html>
-	);
+  return (
+    <html>
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        <Providers>
+          <Header />
+
+          <Container component="main">{children}</Container>
+        </Providers>
+
+        <TanStackRouterDevtools position="bottom-right" />
+        <Scripts />
+      </body>
+    </html>
+  );
 }

@@ -1,0 +1,51 @@
+@property --card-list__gap {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 16px;
+}
+@property --card-list__columns--small {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 3;
+}
+@property --card-list__columns--medium {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 5;
+}
+@property --card-list__columns--large {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 8;
+}
+
+:root {
+  --card-list__gap: 16px;
+  --card-list__columns--small: 3;
+  --card-list__columns--medium: 5;
+  --card-list__columns--large: 8;
+}
+
+main {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+section.card-list.card-list__section {
+  & div.card-list__container {
+    display: grid;
+    gap: var(--card-list__gap);
+    width: 100%;
+    margin-left: var(--card-list__gap);
+    margin-right: var(--card-list__gap);
+    grid-template-columns: repeat(var(--card-list__columns--small), minmax(0, 1fr));
+
+    @media (width >= 48rem /* 768px */) {
+      grid-template-columns: repeat(var(--card-list__columns--medium), minmax(0, 1fr));
+    }
+
+    @media (width >= 64rem /* 1024px */) {
+      grid-template-columns: repeat(var(--card-list__columns--large), minmax(0, 1fr));
+    }
+  }
+}

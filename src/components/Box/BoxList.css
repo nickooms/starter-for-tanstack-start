@@ -1,0 +1,36 @@
+@property --box-list--gap {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 16px;
+}
+
+:root {
+  --box-list--columns__small: 3;
+  --box-list--columns__medium: 5;
+  --box-list--columns__large: 8;
+  /* --box-list--gap: 4px; */
+}
+
+main {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+section.box-list.boxes-section {
+  & div.box-list__container {
+    display: grid;
+    gap: var(--box-list--gap);
+    width: 100%;
+    margin-left: 16px;
+    margin-right: 16px;
+    grid-template-columns: repeat(var(--box-list--columns__small), minmax(0, 1fr));
+
+    @media (width >= 48rem /* 768px */) {
+      grid-template-columns: repeat(var(--box-list--columns__medium), minmax(0, 1fr));
+    }
+
+    @media (width >= 64rem /* 1024px */) {
+      grid-template-columns: repeat(var(--box-list--columns__large), minmax(0, 1fr));
+    }
+  }
+}
