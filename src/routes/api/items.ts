@@ -7,7 +7,7 @@ export const Route = createFileRoute('/api/items')({
     handlers: {
       GET: async () => {
         const items = await fs.promises
-          .readFile('data/items.json', 'utf-8')
+          .readFile('./data/items.json', 'utf-8')
           .then(JSON.parse)
           .then((items) =>
             items.map(
